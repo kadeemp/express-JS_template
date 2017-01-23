@@ -1,0 +1,23 @@
+{
+  "name": "express-template",
+  "version": "1.0.0",
+  "description": "Template for creating and managing a node app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kadeemp/express-JS_template"
+  },
+  "author": "Kadeem Palacios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kadeemp/express-JS_template"
+  },
+  "homepage": "https://github.com/kadeemp/express-JS_template#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "handlebars": "^4.0.6"
+  }
+}
