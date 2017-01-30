@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kadeemp/express-JS_template#readme",
   "dependencies": {
+    "bower": "^1.8.0",
     "express": "^4.14.0",
     "handlebars": "^4.0.6"
   }

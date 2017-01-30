@@ -1,0 +1,23 @@
+{
+  "name": "bower.json",
+  "description": "Template for creating and managing a node app",
+  "main": "index.js",
+  "authors": [
+    "Kadeem Palacios"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/kadeemp/express-JS_template",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}
