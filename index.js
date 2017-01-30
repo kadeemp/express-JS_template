@@ -7,7 +7,7 @@ var app = express()
 //MIDDLEWARE
 app.engine('handlebars', handlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
+app.use(express.static('public'));
 //VARIABLES
 var names = [
     {name:"Kevin"},
@@ -20,9 +20,11 @@ var names = [
 app.get('/api/blahs',function(req, res) {
     res.json({names:names});
 });
-// app.get('/', function (req, res) {
-//   res.render('layouts/home.handlebars')
-// })
+
+
+ app.get('/', function (req, res) {
+   res.render('layouts/home.handlebars')
+ })
 
 //PORT ACTIVATION
 app.listen(3000, function () {
