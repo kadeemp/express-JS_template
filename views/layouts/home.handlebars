@@ -12,6 +12,13 @@
             <iframe width="560" height="315" src="https://www.youtube.com/embed/XKB5h2tJQHQ" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
-
-
 </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="post_list">
+                {{#each posts}}
+                <li>{{this.body}}</li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
