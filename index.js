@@ -21,11 +21,10 @@ var posts = [
 
 // RESPONSE INDEX
 app.get('/posts',function(req, res) {
-    res.render('layouts/posts');
+    res.render('layouts/posts.handlebars', {posts:posts});
 });
 
 
-//RESPONSE Delete
 //RESPONSE Show
 app.get('/posts/:id', function(req, res) {
     var post = posts[req.params.id]
@@ -35,6 +34,11 @@ app.get('/posts/:id', function(req, res) {
 //RESPONSE Update
 //RESPONSE Edit
 //RESPONSE New
+app.post('/posts', function(req, res) {
+    var post = (req.body);
+    posts.push(post);
+    res.status(200).json(post);
+})
 
  app.get('/', function (req, res) {
    res.render('layouts/home.handlebars', {posts:posts})
