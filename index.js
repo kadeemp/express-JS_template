@@ -2,7 +2,8 @@
 var express = require('express')
 var handlebars = require('express-handlebars');
 var mongoose = require('mongoose');
-
+//var post = bfbadbat
+var bodyParser = require('body-parser');
 
 
 var app = express()
@@ -11,6 +12,11 @@ var app = express()
 app.engine('handlebars', handlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+
+}));
 //VARIABLES
 var posts = [
     { body : "Kevin" },
@@ -35,7 +41,7 @@ app.get('/posts/:id', function(req, res) {
 //RESPONSE Edit
 //RESPONSE New
 app.post('/posts', function(req, res) {
-    var post = (req.body);
+    var post = req.body;
     posts.push(post);
     res.status(200).json(post);
 })
