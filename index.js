@@ -8,10 +8,14 @@ var bodyParser = require('body-parser');
 
 var app = express()
 
+mongoose.Promise = global.Promise;
+
 //MIDDLEWARE
 app.engine('handlebars', handlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
+mongoose.connect('mongodb://localhost/express-template')
+var Post = require('./models/post.js')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -19,35 +23,44 @@ app.use(bodyParser.urlencoded({
 }));
 //VARIABLES
 var posts = [
-    { body : "Kevin" },
-    { body : "Kadeem" },
-    { body :"Kain" },
-    { body :"Ken" }
+    { body : "Kevin" }
+
 ]
 
 // RESPONSE INDEX
 app.get('/posts',function(req, res) {
-    res.render('layouts/posts.handlebars', {posts:posts});
+    Post.find().exec(function (err, posts) {
+        res.render('layouts/posts.handlebars', {posts:posts});
+    })
+
 });
 
 
 //RESPONSE Show
 app.get('/posts/:id', function(req, res) {
     var post = posts[req.params.id]
-    res.render('layouts/post-show', {post:post})
+    Post.findById(req.params.id).exec(function (err, post) {
+        res.render('layouts/post-show', {post:post})
+    })
+
 })
 //RESPONSE Delete
 //RESPONSE Update
 //RESPONSE Edit
 //RESPONSE New
 app.post('/posts', function(req, res) {
+    console.log("Post request success")
     var post = req.body;
-    posts.push(post);
-    res.status(200).json(post);
+    Post.create(post, function (err, post) {
+        res.status(200).json(post);
+    })
+
 })
 
  app.get('/', function (req, res) {
-   res.render('layouts/home.handlebars', {posts:posts})
+     Post.find().exec(function (err, posts) {
+         res.render('layouts/home.handlebars', {posts:posts});
+     })
  })
 
 //PORT ACTIVATION

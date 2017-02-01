@@ -1,15 +1,19 @@
 
 console.log('i live to serve')
+
 $(document).ready(function() {
+
     $( "#new-post" ).on( "submit", function( event ) {
-  event.preventDefault();
+        event.preventDefault();
 
-var post = $(this).serialize();
+        var post = $(this).serialize();
 
-      $.post('/posts', post, function (data) {
-          console.log(data)
-          $('#posts').append("<li>" + data.body + "</li>");
-          $('#new-post')[0].reset();
+        $.post('/posts', post, function (data) {
+            console.log(data)
+            $('#posts').append("<li>" + data.body + "</li>");
+            $('#new-post')[0].reset();
+        });
+    });
 });
     // $('').submit(function (e){
     //     console.log(e)
@@ -26,8 +30,7 @@ var post = $(this).serialize();
     //         $('#new-post')[0].reset();
 
 
-})
-})
+
 
 //   });
 // });

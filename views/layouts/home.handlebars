@@ -20,9 +20,9 @@
                 <input type="text" name="body"/>
                 <button type="submit">Save</button>
             </form>
-            <ul class="post-list">
+            <ul class="post-list" id="posts">
                 {{#each posts}}
-                <li>{{this.body}}</li>
+                <li><a href="/posts/{{this._id}}">{{this.body}}</a></li>
                 {{/each}}
             </ul>
         </div>
