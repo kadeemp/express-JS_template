@@ -15,7 +15,12 @@
 </div>
     <div class="row">
         <div class="col-xs-12">
-            <ul class="post_list">
+            <form id="new-post">
+                <label for="body">New Post</label>
+                <input type="text" name="body"/>
+                <button type="submit">Save</button>
+            </form>
+            <ul class="post-list">
                 {{#each posts}}
                 <li>{{this.body}}</li>
                 {{/each}}
