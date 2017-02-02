@@ -2,9 +2,7 @@
 var express = require('express')
 var handlebars = require('express-handlebars');
 var mongoose = require('mongoose');
-//var post = bfbadbat
 var bodyParser = require('body-parser');
-
 
 var app = express()
 
@@ -23,45 +21,45 @@ app.use(bodyParser.urlencoded({
 }));
 //VARIABLES
 var posts = [
-    { body : "Kevin" }
-
 ]
 
-// RESPONSE INDEX
-app.get('/posts',function(req, res) {
-    Post.find().exec(function (err, posts) {
-        res.render('layouts/posts.handlebars', {posts:posts});
-    })
-
-});
-
-
-//RESPONSE Show
-app.get('/posts/:id', function(req, res) {
-    var post = posts[req.params.id]
-    Post.findById(req.params.id).exec(function (err, post) {
-        res.render('layouts/post-show', {post:post})
-    })
-
-})
-//RESPONSE Delete
-//RESPONSE Update
-//RESPONSE Edit
-//RESPONSE New
-app.post('/posts', function(req, res) {
-    console.log("Post request success")
-    var post = req.body;
-    Post.create(post, function (err, post) {
-        res.status(200).json(post);
-    })
-
-})
-
+//HOME
  app.get('/', function (req, res) {
      Post.find().exec(function (err, posts) {
          res.render('layouts/home.handlebars', {posts:posts});
      })
  })
+//INDEX
+app.get('/posts',function(req, res) {
+    Post.find().exec(function (err, posts) {
+        res.render('layouts/posts.handlebars', {posts:posts});
+    })
+});
+//SHOW
+app.get('/posts/:id', function(req, res) {
+    var post = posts[req.params.id]
+    Post.findById(req.params.id).exec(function (err, post) {
+        res.render('layouts/post-show', {post:post})
+    })
+})
+//CREATE
+app.post('/posts', function(req, res) {
+    var post = req.body;
+    Post.create(post, function (err, post) {
+        res.status(200).json(post);
+    })
+})
+//DELETE
+app.delete('/posts/:id', function(req, res) {
+    
+    Post.findById(req.params.id).exec(function (err, post) {
+        post.remove()
+        res.status(200).json({})
+    })
+})
+//UPDATE
+//EDIT
+
 
 //PORT ACTIVATION
 app.listen(3000, function () {

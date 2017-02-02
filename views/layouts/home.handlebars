@@ -22,7 +22,12 @@
             </form>
             <ul class="post-list" id="posts">
                 {{#each posts}}
-                <li><a href="/posts/{{this._id}}">{{this.body}}</a></li>
+                <li>
+                    <a href="/posts/{{this._id}}">
+                    {{this.body}}
+                    </a>
+                    <div id="remove-post" data-id="{{this._id}}">Remove</div>
+                </li>
                 {{/each}}
             </ul>
         </div>
