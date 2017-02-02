@@ -23,8 +23,8 @@ $(document).ready(function() {
         $.ajax({
             url: '/posts/' + postId,
             type: 'DELETE',
-            success: function(result) {
-                $(this).parent().remove();
+            success: function(data) {
+                post.parent().remove();
             }
         })
     })
