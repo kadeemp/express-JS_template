@@ -51,7 +51,7 @@ app.post('/posts', function(req, res) {
 })
 //DELETE
 app.delete('/posts/:id', function(req, res) {
-    
+
     Post.findById(req.params.id).exec(function (err, post) {
         post.remove()
         res.status(200).json({})
@@ -59,7 +59,11 @@ app.delete('/posts/:id', function(req, res) {
 })
 //UPDATE
 //EDIT
+app.get('/signin', function (req, res) {
 
+    res.render('layouts/signin.handlebars')
+
+});
 
 //PORT ACTIVATION
 app.listen(3000, function () {

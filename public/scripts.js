@@ -10,7 +10,10 @@ $(document).ready(function() {
 
         $.post('/posts', post, function (data) {
             console.log(data)
-            $('#post-list').append("<li>" + data.body + "</li>");
+            $('#post-list').append("<li class= 'list-group-item'>" +
+            "<a href='/posts/" + data._id + "'>" + data.body + "</a>" +
+            "<div class='remove-post' data-id='" + data._id +
+             "'><i class='ion-trash-a'></i></div>" + "</li>");
             $('#new-post')[0].reset();
         });
     });
