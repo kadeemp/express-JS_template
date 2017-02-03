@@ -17,16 +17,18 @@
         <div class="col-xs-12">
             <form id="new-post">
                 <label for="body">New Post</label>
-                <input type="text" name="body"/>
-                <button type="submit">Save</button>
+                <input type="text" name="body" class="form-control"/>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
             </form>
-            <ul class="post-list" id="posts">
+            <ul id="post-list" class="posts">
                 {{#each posts}}
                 <li>
                     <a href="/posts/{{this._id}}">
                     {{this.body}}
                     </a>
-                    <div id="remove-post" data-id="{{this._id}}">Remove</div>
+                    <div class="remove-post pull-right" data-id="{{this._id}}"><i class="ion-trash-a"></i></div>
                 </li>
                 {{/each}}
             </ul>

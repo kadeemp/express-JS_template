@@ -10,11 +10,12 @@ $(document).ready(function() {
 
         $.post('/posts', post, function (data) {
             console.log(data)
-            $('#posts').append("<li>" + data.body + "</li>");
+            $('#post-list').append("<li>" + data.body + "</li>");
             $('#new-post')[0].reset();
         });
     });
-    $('#remove-post').click(function (e) {
+
+    $('#post-list').on("click", ".remove-post",  function (e) {
         e.preventDefault();
         console.log("remove-post");
         var post = $(this)
