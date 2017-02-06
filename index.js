@@ -12,6 +12,7 @@ mongoose.Promise = global.Promise;
 app.engine('handlebars', handlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
+
 mongoose.connect('mongodb://localhost/express-template')
 var Post = require('./models/post.js')
 app.use(bodyParser.json());
@@ -59,11 +60,13 @@ app.delete('/posts/:id', function(req, res) {
 })
 //UPDATE
 //EDIT
-app.get('/signin', function (req, res) {
-
+app.get('/login', function (req, res) {
     res.render('layouts/signin.handlebars')
-
 });
+app.get('/signup', function (req, res) {
+    res.render('layouts/signup.handlebars')
+});
+
 
 //PORT ACTIVATION
 app.listen(3000, function () {
