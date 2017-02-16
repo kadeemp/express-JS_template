@@ -4,6 +4,7 @@ var handlebars = require('express-handlebars');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
+
 var app = express()
 
 mongoose.Promise = global.Promise;
@@ -43,6 +44,7 @@ app.get('/posts/:id', function(req, res) {
         res.render('layouts/post-show', {post:post})
     })
 })
+
 //CREATE
 app.post('/posts', function(req, res) {
     var post = req.body;
@@ -50,6 +52,7 @@ app.post('/posts', function(req, res) {
         res.status(200).json(post);
     })
 })
+
 //DELETE
 app.delete('/posts/:id', function(req, res) {
 
@@ -60,9 +63,22 @@ app.delete('/posts/:id', function(req, res) {
 })
 //UPDATE
 //EDIT
+
+//SIGN IN
 app.get('/login', function (req, res) {
-    res.render('layouts/signin.handlebars')
+    res.render('layouts/login.handlebars')
 });
+
+app.post('login', function(req,res) {
+    var small = new Tank(req.body);
+    small.save(function (err) {
+      if (err) return handleError(err);
+      // saved!
+    });
+    console.log(req.body)
+})
+
+//SIGN UP
 app.get('/signup', function (req, res) {
     res.render('layouts/signup.handlebars')
 });

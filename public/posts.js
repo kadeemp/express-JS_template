@@ -6,7 +6,7 @@ $(document).ready(function() {
     $( "#new-post" ).on( "submit", function( event ) {
         event.preventDefault();
 
-        var post = $(this).serialize();
+
 
         $.post('/posts', post, function (data) {
             console.log(data)
