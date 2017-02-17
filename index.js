@@ -69,19 +69,22 @@ app.get('/login', function (req, res) {
     res.render('layouts/login.handlebars')
 });
 
-app.post('login', function(req,res) {
+
+
+//SIGN UP
+app.get('/signup', function (req, res) {
+    res.render('layouts/signup.handlebars')
+});
+
+app.post('/signup', function(req,res) {
     var small = new Tank(req.body);
     small.save(function (err) {
       if (err) return handleError(err);
       // saved!
     });
     console.log(req.body)
-})
 
-//SIGN UP
-app.get('/signup', function (req, res) {
-    res.render('layouts/signup.handlebars')
-});
+})
 
 
 //PORT ACTIVATION
