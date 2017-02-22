@@ -1,3 +1,4 @@
+
 $.fn.serializeObject = function()
 {
   var o = {};
@@ -18,11 +19,12 @@ $.fn.serializeObject = function()
 $(document).ready(function() {
     $("#signup-form").submit(function(e) {
         e.preventDefault();
-        console.log(post);
+        var user = $('#signup-form').serializeObject();
+        console.log(user);
 
-        var post = $('#signup-form').serializeObject();
-        console.log(post);
-        $.post('/signup', post, function (data) {
+
+        $.post('/users', user, function (data) {
+            console.log(data);
 
         })
     })

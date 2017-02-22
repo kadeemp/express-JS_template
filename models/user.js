@@ -6,10 +6,12 @@ var mongoose = require('mongoose'),
      createdAt       : { type: Date }
    , updatedAt       : { type: Date }
 
+   , firstName           : { type: String, required: true }
+   , lastName            : { type: String, required: true }
    , email           : { type: String, unique: true, required: true }
    , password        : { type: String, required: true }
-   , first           : { type: String, required: true }
-   , last            : { type: String, required: true }
+   , passwordConfirm        : { type: String, required: true }
+
 
  });
 
@@ -33,7 +35,7 @@ var mongoose = require('mongoose'),
      });
    });
  });
-
+ 
 
  UserSchema.methods.comparePassword = function(password, done) {
    bcrypt.compare(password, this.password, function(err, isMatch) {

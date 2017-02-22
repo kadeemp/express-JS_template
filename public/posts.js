@@ -1,13 +1,12 @@
 
 console.log('i live to serve')
 
+
+
 $(document).ready(function() {
 
     $( "#new-post" ).on( "submit", function( event ) {
         event.preventDefault();
-
-
-
         $.post('/posts', post, function (data) {
             console.log(data)
             $('#post-list').append("<li class= 'list-group-item'>" +
