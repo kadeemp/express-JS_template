@@ -23,9 +23,22 @@ $(document).ready(function() {
         console.log(user);
 
 
-        $.post('/users', user, function (data) {
+        $.post('/signup', user, function (data) {
+            Cookies.set('token', data.token);
             console.log(data);
+            window.location.href = "/";
+        })
+    })
 
+    $("#login-form").submit(function(e) {
+        e.preventDefault();
+        var user = $('#login-form').serializeObject();
+        console.log(user);
+
+        $.post('/login', user, function (data) {
+            Cookies.set('token', data.token);
+            console.log(data);
+            window.location.href = "/";
         })
     })
 })

@@ -6,13 +6,10 @@ var mongoose = require('mongoose'),
      createdAt       : { type: Date }
    , updatedAt       : { type: Date }
 
-   , firstName           : { type: String, required: true }
-   , lastName            : { type: String, required: true }
+   , firstName           : { type: String }
+   , lastName            : { type: String }
    , email           : { type: String, unique: true, required: true }
    , password        : { type: String, required: true }
-   , passwordConfirm        : { type: String, required: true }
-
-
  });
 
  UserSchema.pre('save', function(next){
@@ -35,7 +32,7 @@ var mongoose = require('mongoose'),
      });
    });
  });
- 
+
 
  UserSchema.methods.comparePassword = function(password, done) {
    bcrypt.compare(password, this.password, function(err, isMatch) {
