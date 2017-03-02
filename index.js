@@ -97,6 +97,22 @@ app.get('/login', function (req, res) {
     res.render('layouts/login.handlebars')
 });
 
+app.post('/login', function(req,res) {
+    var user = {email: req.body.email, password: req.body.password};
+      var token = jsonwebtoken.sign({ _id: user._id }, 'shhhhhhared-secret');
+      res.json({token:token});
+})
+    // user.save(function (err) {
+    //   if (err) console.log(err);
+    //   // saved!
+    //   var token = jsonwebtoken.sign({ _id: user._id }, 'shhhhhhared-secret');
+    //   console.log(req.body)
+    //
+    //   console.log(token)
+    //   res.json({ token: token });
+    // });
+// })
+
 //SIGN UP
 app.get('/signup', function (req, res) {
     res.render('layouts/signup.handlebars')

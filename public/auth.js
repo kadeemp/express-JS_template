@@ -37,8 +37,8 @@ $(document).ready(function() {
 
         $.post('/login', user, function (data) {
             Cookies.set('token', data.token);
-            console.log(data);
-            window.location.href = "/";
+            console.log(user);
+            //window.location.href = "/";
         })
     })
 })
